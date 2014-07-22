@@ -49,8 +49,7 @@ function World:basicSprites(r,g,b)
 	love.graphics.setCanvas()
 end
 
-function World:playMusic()
-	TEsound.play(self.music)
-end
+function World:playMusic() TEsound.play(self.music) end
+function World:pauseMusic() Tesound.pause(self.music) end
 
 return World
