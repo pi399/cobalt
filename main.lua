@@ -20,7 +20,6 @@ function love.load()
 	world:basicSprites()
 	
 	love.graphics.setBackgroundColor(255,255,255)
-	love.window.setTitle("côbalt v.0.3")
 	oxygenmono,dayposterblack=love.graphics.newFont("resources/fonts/oxygenmono.otf"),
 		love.graphics.newFont("resources/fonts/dayposterblack.ttf",60)
 		TEsound.play("resources/music/ppp.mp3")
