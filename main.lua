@@ -1,6 +1,6 @@
 --main.lua
 
-Moveable=require "moveable" local Moveable=Moveable
+Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
@@ -28,7 +28,7 @@ end
 function love.update(dt)
 	for i,ma in ipairs(world) do
 		ma:update(dt)
-end end
+end	end
 
 function pausedupdate() end
 
@@ -41,7 +41,7 @@ function love.draw()
 		love.graphics.setColor(0,0,0) love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
 		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y).."\nfps: "..love.timer.getFPS(),10,10)
-end end
+end	end
 
 function pauseddraw()
 	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
@@ -63,7 +63,7 @@ function love.keypressed(key)
 		love.draw,pauseddraw = pauseddraw,love.draw
 	elseif key==keys.quit then
 		love.event.push("quit")
-end end
+end	end
 
 function love.keyreleased(key)
 	if key==keys.up then
@@ -74,4 +74,4 @@ function love.keyreleased(key)
 		world.player.ax=0
 	elseif key==keys.right then
 		world.player.ax=0
-end end
+end	end
