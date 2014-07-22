@@ -3,6 +3,7 @@
 local World={}
 local mt={__index=World}
 local Moveable=Moveable
+local TEsound=TEsound
 local love=love
 local ipairs=ipairs
 
@@ -19,6 +20,8 @@ function World:loadFile(filepath)
 				w["a"]=string.gsub(line,"a=","",1)
 			elseif string.sub(line,1,2)=="g=" then
 				w["g"]=string.gsub(line,"g=","",1)
+			elseif string.sub(line,1,2)=="music=" then
+				w["music"]="resources/music/"..string.gsub(line,"music=","",1)
 			else
 				w[string.gsub(line,"=.+","")]=
 				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
@@ -44,6 +47,10 @@ function World:basicSprites(r,g,b)
 		love.graphics.rectangle(fill,0,0,ma.xl,ma.yl)
 	end
 	love.graphics.setCanvas()
+end
+
+function World:playMusic()
+	TEsound.play(self.music)
 end
 
 return World
