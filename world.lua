@@ -26,7 +26,7 @@ function World:loadFile(filepath)
 			else
 				w[string.gsub(line,"=.+","")]=
 				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
-	end end end
+	end	end	end
 	setmetatable(w,mt)
 	local rw=w;w=nil
 	return rw
@@ -38,6 +38,6 @@ function World:initializeCollisions()
 			if type(ma)=="table" and type(imma)=="table" then
 				ma.worldxcount[imma]=0
 				ma.worldycount[imma]=0
-end end end end
+end	end	end	end
 
 return World
