@@ -1,5 +1,5 @@
 --main.lua
-require "TEsound"
+TEsound=require "TEsound"	local TEsound=TEsound
 Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
