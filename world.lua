@@ -54,11 +54,11 @@ function World:playMusic()
 end
 
 function World:pauseMusic()
-    TEsound.pause("all")
+    TEsound.pause("world")
 end
 
 function World:resumeMusic()
-    TEsound.resume("all")
+    TEsound.resume("world")
 end
 
 return World
