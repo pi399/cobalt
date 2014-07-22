@@ -20,7 +20,7 @@ function love.load()
 	world:basicSprites()
 	
 	love.graphics.setBackgroundColor(255,255,255)
-	love.window.setTitle("LÖVE Collisions v.0.3")
+	love.window.setTitle("côbalt v.0.3")
 	oxygenmono,dayposterblack=love.graphics.newFont("resources/fonts/oxygenmono.otf"),
 		love.graphics.newFont("resources/fonts/dayposterblack.ttf",60)
 		TEsound.play("resources/music/ppp.mp3")
@@ -60,10 +60,10 @@ function love.keypressed(key)
 	elseif key==keys.right then
 		world.player.ax=world.player.ax+world.a
 	elseif key==keys.debug then
-		debug = not debug
+		debug=not debug
 	elseif key==keys.pause then
-		love.update,pausedupdate = pausedupdate,love.update
-		love.draw,pauseddraw = pauseddraw,love.draw
+		love.update,pausedupdate=pausedupdate,love.update
+		love.draw,pauseddraw=pauseddraw,love.draw
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end

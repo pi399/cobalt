@@ -1,4 +1,4 @@
-cobalt-code v.0.3
+côbalt v.0.3
 ============
 
 Copyright 2014 Ian DeWalt

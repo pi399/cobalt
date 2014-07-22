@@ -7,7 +7,7 @@ local love=love
 local ipairs=ipairs
 
 function World:loadFile(filepath)
-	w={}
+	w,t,f={},true,false
 	local file=love.filesystem.newFile(filepath)
 	if assert(file:open("r"),filepath.." could not be opened.") then
 		for line in file:lines() do
@@ -23,8 +23,9 @@ function World:loadFile(filepath)
 				w[string.gsub(line,"=.+","")]=
 				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
 	end	end	end
-	setmetatable(w,mt)
-	return w
+	local rw=w;w,t,f=nil,nil,nil
+	setmetatable(rw,mt)
+	return rw
 end
 
 function World:initializeCollisions()
