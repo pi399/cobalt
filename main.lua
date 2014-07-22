@@ -1,5 +1,5 @@
 --main.lua
-
+require "TEsound"
 Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
@@ -23,12 +23,15 @@ function love.load()
 	love.window.setTitle("LÖVE Collisions v.0.3")
 	oxygenmono,dayposterblack=love.graphics.newFont("resources/fonts/oxygenmono.otf"),
 		love.graphics.newFont("resources/fonts/dayposterblack.ttf",60)
+		TEsound.play("resources/music/ppp.mp3")
 end
 
 function love.update(dt)
 	for i,ma in ipairs(world) do
 		ma:update(dt)
-end	end
+	end	
+	TEsound.cleanup()
+end
 
 function pausedupdate() end
 
