@@ -50,6 +50,6 @@ function World:basicSprites(r,g,b)
 end
 
 function World:playMusic() TEsound.play(self.music) end
-function World:pauseMusic() Tesound.pause(self.music) end
+function World:pauseMusic() TEsound.pause(self.music) end
 
 return World
