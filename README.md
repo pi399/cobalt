@@ -1,4 +1,4 @@
-côbalt v.0.3
+côbalt
 ============
 
 Copyright 2014 Ian DeWalt
