@@ -18,11 +18,11 @@ function love.load()
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
 	world:basicSprites()
+	if world.music then world:playMusic() end
 	
 	love.graphics.setBackgroundColor(255,255,255)
 	oxygenmono,dayposterblack=love.graphics.newFont("resources/fonts/oxygenmono.otf"),
 		love.graphics.newFont("resources/fonts/dayposterblack.ttf",60)
-		TEsound.play("resources/music/ppp.mp3")
 end
 
 function love.update(dt)
