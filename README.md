@@ -2,8 +2,12 @@ côbalt v.0.3.2
 ============
 
 Drop us a line at:
+
 ianpdw@gmail.com - Ian DeWalt, Head Developer
+
 brettrsears@gmail.com - Brett Sears, Miscellaneous Assistance
+
+
 
 Copyright 2014 Ian DeWalt
 This is somewhat of a game engine, meant to simulate collisions and basic physics somewhat accurately. The main goal, although it is still quite distant,is to provide a full featured game in Lua with collisions, sounds, music, and more. Brett Sears has provided assistance in the development process as well. This is programmed in Lua using bundles and bundles of LÖVE.
