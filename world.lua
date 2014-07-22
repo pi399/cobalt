@@ -20,7 +20,7 @@ function World:loadFile(filepath)
 				w["a"]=string.gsub(line,"a=","",1)
 			elseif string.sub(line,1,2)=="g=" then
 				w["g"]=string.gsub(line,"g=","",1)
-			elseif string.sub(line,1,2)=="music=" then
+			elseif string.sub(line,1,6)=="music=" then
 				w["music"]="resources/music/"..string.gsub(line,"music=","",1)
 			else
 				w[string.gsub(line,"=.+","")]=
