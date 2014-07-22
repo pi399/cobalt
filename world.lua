@@ -23,7 +23,6 @@ function World:loadFile(filepath)
 				w[string.gsub(line,"=.+","")]=
 				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
 	end	end	end
-	World["name"]=w
 	setmetatable(w,mt)
 	return w
 end
