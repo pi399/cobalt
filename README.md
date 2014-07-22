@@ -1,4 +1,4 @@
-côbalt v.0.3.1
+côbalt v.0.3.2
 ============
 
 Copyright 2014 Ian DeWalt
@@ -8,3 +8,4 @@ v.0.1: collision checking between just two objects works
 v.0.2: collision checking between multiple objects works
 v.0.3: can now load worlds
 v.0.3.1: develops simple sprites for objects in a world
+v.0.3.2: loads music
