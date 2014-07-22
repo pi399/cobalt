@@ -64,6 +64,7 @@ function love.keypressed(key)
 	elseif key==keys.pause then
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
+		world:pauseMusic()
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
