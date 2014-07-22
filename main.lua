@@ -19,7 +19,7 @@ function love.load()
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
 	world:basicSprites()
-	if world.music then world:playMusic() end
+	TEsound.play(world.music)
 	
 	love.graphics.setBackgroundColor(255,255,255)
 	oxygenmono,dayposterblack=love.graphics.newFont("resources/fonts/oxygenmono.otf"),
@@ -64,7 +64,7 @@ function love.keypressed(key)
 	elseif key==keys.pause then
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-		world:pauseMusic()
+		TEsound.pause(world.music)
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
