@@ -6,15 +6,16 @@ World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
 
-local keys,debug
+local keys,debug,paused
 local world
 local oxygenmono,dayposterblack
 local function round(num) return math.floor(num+0.5) end
-local paused = 0
+
 function love.load()
 	keys={["up"]="w",["down"]="s",["left"]="a",["right"]="d",
 			["quit"]="escape",["debug"]="f3",["pause"]="q"}
 	debug=false
+	paused=false
 	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
@@ -62,9 +63,10 @@ function love.keypressed(key)
 	elseif key==keys.debug then
 		debug=not debug
 	elseif key==keys.pause then
+		paused = not paused
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-        if paused == 0 then world.pauseMusic() paused = 1 elseif paused == 1 then world.resumeMusic() paused = 0 end
+        if paused then world.pauseMusic() else world.resumeMusic() end
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
