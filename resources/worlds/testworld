@@ -2,6 +2,7 @@ n=côbalt testworld
 f=0.87
 a=.5
 g=0
+music=ppp.mp3
 player=t,t,t,16,16,16,16
 object1=t,f,f,256,192,64,64
 object2=t,f,f,272,266,64,64
