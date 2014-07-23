@@ -12,7 +12,7 @@ function World:loadFile(filepath)
 	local file=love.filesystem.newFile(filepath)
 	if assert(file:open("r"),filepath.." could not be opened.") then
 		for line in file:lines() do
-			if string.sub(line,1,2)=="n=" then
+			--[[if string.sub(line,1,2)=="n=" then
 				w["name"]=string.gsub(line,"n=","",1)
 			elseif string.sub(line,1,2)=="f=" then
 				w["f"]=string.gsub(line,"f=","",1)
@@ -24,7 +24,13 @@ function World:loadFile(filepath)
 				w["music"]="resources/music/"..string.gsub(line,"music=","",1)
 			else
 				w[string.gsub(line,"=.+","")]=
-				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
+				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)]]
+			if string.sub(line,1,2)=="" then return
+			elseif string.sub(line,1,2)=="~" then
+				w[string.gsub(string.gsub(line,"=.+",""),"~","",1)]
+				=assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
+			else
+				w[string.gsub(line,"=.+","")]=string.gsub(line,".+=","",1)
 	end	end	end
 	local rw=w;w,t,f=nil,nil,nil
 	setmetatable(rw,mt)
