@@ -4,7 +4,7 @@ local Moveable={}
 local mt={__index=Moveable}
 local love=love
 
-function Moveable:new(world,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may)
+function Moveable:new(world,sprite,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may)
 	sprite,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may=
 		sprite or love.graphics.newCanvas(),mc or false,mm or false,mx or 0,my or 0,
 		mxl or 1,myl or 1,mvx or 0,mvy or 0,max or 0,may or 0
