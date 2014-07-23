@@ -33,7 +33,7 @@ function love.update(dt)
 	for i,ma in ipairs(world) do
 		ma:update(dt)
 	end
-	duration=floor(ove.timer.getTime()-start)
+	duration=floor(love.timer.getTime()-start)
 	TEsound.cleanup()
 end
 function pausedupdate() end
