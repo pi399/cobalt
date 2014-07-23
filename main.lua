@@ -8,7 +8,7 @@ local ipairs=ipairs
 
 local world
 local keys,debug,paused
-local duration,start
+local playtime,start
 local oxygenmono,dayposterblack
 local function round(num) return math.floor(num+0.5) end
 
@@ -17,7 +17,7 @@ function love.load()
 			["quit"]="escape",["debug"]="f3",["pause"]="q"}
 	debug=false
 	paused=false
-	duration,start=0,love.timer.getTime()
+	playtime,start=0,love.timer.getTime()
 	
 	math.randomseed(os.time())
 	
@@ -35,7 +35,7 @@ function love.update(dt)
 	for i,ma in ipairs(world) do
 		ma:update(dt)
 	end
-	duration=math.floor(love.timer.getTime()-start)
+	playtime=math.floor(love.timer.getTime()-start)
 	TEsound.cleanup()
 end
 function pausedupdate() end
@@ -54,14 +54,16 @@ function love.draw()
 	if debug then
 		love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
-		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y).."\nfps: "..love.timer.getFPS(),10,10)
+		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y)
+		.."\nfps: "..love.timer.getFPS()
+		.."\nplaytime: "..playtime.." seconds",10,10)
 end	end
 
 function pauseddraw()
 	love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
-	love.graphics.print("Current playtime: "..duration.." seconds",10,10)
-	randomcolor(true)	love.graphics.setFont(dayposterblack)
-	love.graphics.printf("GAME PAUSED",0,200,512,"center")
+	love.graphics.print("Current playtime: "..playtime.." seconds",10,10)
+	--randomcolor(true)
+	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
 function love.keypressed(key)
