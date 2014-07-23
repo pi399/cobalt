@@ -5,18 +5,20 @@ Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
+local a= {}
 
-local keys,debug,paused
+local keys,debug
 local world
 local oxygenmono,dayposterblack
 local function round(num) return math.floor(num+0.5) end
-
+local paused = 0
 function love.load()
 	keys={["up"]="w",["down"]="s",["left"]="a",["right"]="d",
 			["quit"]="escape",["debug"]="f3",["pause"]="q"}
 	debug=false
-	paused=false
-	
+	for  i=1,247 do
+        a[i]=i
+    end
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
 	world:basicSprites()
@@ -40,7 +42,7 @@ function love.draw()
 	for i,ma in ipairs(world) do
 		love.graphics.draw(ma.sprite,ma.x,ma.y)
 	end
-	
+    
 	if debug then
 		love.graphics.setColor(0,0,0) love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
@@ -48,6 +50,7 @@ function love.draw()
 end	end
 
 function pauseddraw()
+    love.graphics.setColor(a[math.random(1,#a)],a[math.random(1,#a)],a[math.random(1,#a)]) love.timer.sleep(0.09)
 	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
@@ -63,10 +66,9 @@ function love.keypressed(key)
 	elseif key==keys.debug then
 		debug=not debug
 	elseif key==keys.pause then
-		paused = not paused
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-        if paused then world.pauseMusic() else world.resumeMusic() end
+        if paused == 0 then world.pauseMusic() paused = 1 elseif paused == 1 then world.resumeMusic() paused = 0 end
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
