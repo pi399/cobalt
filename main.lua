@@ -34,7 +34,7 @@ function love.update(dt)
 end
 function pausedupdate() end
 
-function randomcolor() love.graphics.setColor(a[math.random(1,255)],a[math.random(1,255)],a[math.random(1,255)]) end
+function randomcolor() love.graphics.setColor(math.random(1,255),math.random(1,255),math.random(1,255)) end
 
 function love.draw()
 	for i,ma in ipairs(world) do
