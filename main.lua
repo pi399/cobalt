@@ -38,7 +38,7 @@ function love.update(dt)
 	duration=math.floor(love.timer.getTime()-start)
 	TEsound.cleanup()
 end
-function pausedupdate() end
+function pausedupdate() love.sleep(0.1) end
 
 function randomcolor(set)
 	local r,g,b=math.random(1,255),math.random(1,255),math.random(1,255)
