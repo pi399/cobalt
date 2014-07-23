@@ -42,7 +42,7 @@ function randomcolor(set)
 	local r,g,b=math.random(1,255),math.random(1,255),math.random(1,255)
 	if set then love.graphics.setColor(r,g,b)
 	else return r,g,b
-end
+end	end
 
 function love.draw()
 	for i,ma in ipairs(world) do
@@ -53,8 +53,7 @@ function love.draw()
 		love.graphics.setColor(0,0,0) love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
 		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y).."\nfps: "..love.timer.getFPS(),10,10)
-    end	
-end
+end	end
 
 function pauseddraw()
 	love.graphics.setColor(0,0,0)    
