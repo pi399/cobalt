@@ -5,9 +5,10 @@ Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
-local start = love.timer.getTime()
-local keys,debug,paused
+
 local world
+local keys,debug,paused
+local duration,start
 local oxygenmono,dayposterblack
 local function round(num) return math.floor(num+0.5) end
 
@@ -16,10 +17,11 @@ function love.load()
 			["quit"]="escape",["debug"]="f3",["pause"]="q"}
 	debug=false
 	paused=false
+	duration,start=0,love.timer.getTime()
 	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
-	world:basicSprites()
+	world:basicSprites(randomcolor())
 	if world.music then world:playMusic() end
 	
 	love.graphics.setBackgroundColor(255,255,255)
@@ -30,16 +32,20 @@ end
 function love.update(dt)
 	for i,ma in ipairs(world) do
 		ma:update(dt)
-	end	
+	end
+	duration=floor(ove.timer.getTime()-start)
 	TEsound.cleanup()
 end
 function pausedupdate() end
 
-function randomcolor() love.graphics.setColor(math.random(1,255),math.random(1,255),math.random(1,255)) end
+function randomcolor(set)
+	local r,g,b=math.random(1,255),math.random(1,255),math.random(1,255)
+	if set then love.graphics.setColor(r,g,b)
+	else return r,g,b
+end
 
 function love.draw()
 	for i,ma in ipairs(world) do
-		randomcolor()
 		love.graphics.draw(ma.sprite,ma.x,ma.y)
 	end
     
@@ -51,12 +57,11 @@ function love.draw()
 end
 
 function pauseddraw()
-
-    love.timer.sleep(0.09)
-    love.graphics.setColor(0,0,0)    
-    love.graphics.setFont(oxygenmono) love.graphics.print("Current playtime: "..tostring(round(love.timer.getTime() - start)),10,410,0,1,1)
-    randomcolor()
-    love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
+	love.graphics.setColor(0,0,0)    
+	love.graphics.setFont(oxygenmono)
+	love.graphics.print("Current playtime: "..duration.." seconds",10,10)
+	randomcolor()
+	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
 function love.keypressed(key)
