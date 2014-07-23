@@ -23,7 +23,7 @@ function love.load()
 	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
-	world:basicSprites(randomcolor(false))
+	world:basicSprites()
 	if world.music then world:playMusic() end
 	
 	love.graphics.setBackgroundColor(255,255,255)
@@ -38,7 +38,7 @@ function love.update(dt)
 	duration=math.floor(love.timer.getTime()-start)
 	TEsound.cleanup()
 end
-function pausedupdate() love.timer.sleep(0.1) end
+function pausedupdate() end
 
 function randomcolor(set)
 	local r,g,b=math.random(1,255),math.random(1,255),math.random(1,255)
