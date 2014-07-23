@@ -5,7 +5,6 @@ Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
-local a= {}
 
 local keys,debug
 local world
@@ -16,9 +15,7 @@ function love.load()
 	keys={["up"]="w",["down"]="s",["left"]="a",["right"]="d",
 			["quit"]="escape",["debug"]="f3",["pause"]="q"}
 	debug=false
-	for  i=1,247 do
-        a[i]=i
-    end
+	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
 	world:basicSprites()
@@ -35,11 +32,13 @@ function love.update(dt)
 	end	
 	TEsound.cleanup()
 end
-
 function pausedupdate() end
+
+function randomcolor() love.graphics.setColor(a[math.random(1,255)],a[math.random(1,255)],a[math.random(1,255)]) end
 
 function love.draw()
 	for i,ma in ipairs(world) do
+		randomcolor()
 		love.graphics.draw(ma.sprite,ma.x,ma.y)
 	end
     
@@ -50,7 +49,7 @@ function love.draw()
 end	end
 
 function pauseddraw()
-    love.graphics.setColor(a[math.random(1,#a)],a[math.random(1,#a)],a[math.random(1,#a)]) love.timer.sleep(0.09)
+	randomcolor() love.timer.sleep(0.09)
 	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
