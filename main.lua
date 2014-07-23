@@ -5,7 +5,7 @@ Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
 local ipairs=ipairs
-
+local start = love.timer.getTime()
 local keys,debug,paused
 local world
 local oxygenmono,dayposterblack
@@ -47,11 +47,16 @@ function love.draw()
 		love.graphics.setColor(0,0,0) love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
 		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y).."\nfps: "..love.timer.getFPS(),10,10)
-end	end
+    end	
+end
 
 function pauseddraw()
-	randomcolor() love.timer.sleep(0.09)
-	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
+
+    love.timer.sleep(0.09)
+    love.graphics.setColor(0,0,0)    
+    love.graphics.setFont(oxygenmono) love.graphics.print("Current playtime: "..tostring(round(love.timer.getTime() - start)),10,410,0,1,1)
+    randomcolor()
+    love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
 function love.keypressed(key)
