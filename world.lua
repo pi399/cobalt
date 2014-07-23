@@ -36,9 +36,10 @@ function World:basicSprites(r,g,b)
 	local fill="fill"
 	love.graphics.setColor(r or 0,g or 0,b or 0)
 	for i,ma in ipairs(self) do
-		love.graphics.setCanvas(ma.sprite)
-		love.graphics.rectangle(fill,0,0,ma.xl,ma.yl)
-	end
+		if ma.sprite:typeOf("Canvas") then
+			love.graphics.setCanvas(ma.sprite)
+			love.graphics.rectangle(fill,0,0,ma.xl,ma.yl)
+	end	end
 	love.graphics.setCanvas()
 end
 
