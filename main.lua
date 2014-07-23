@@ -19,6 +19,8 @@ function love.load()
 	paused=false
 	duration,start=0,love.timer.getTime()
 	
+	math.randomseed(os.time())
+	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
 	world:basicSprites(randomcolor())
