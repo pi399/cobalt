@@ -25,8 +25,7 @@ function World:loadFile(filepath)
 			else
 				w[string.gsub(line,"=.+","")]=
 				assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)]]
-			if string.sub(line,1,2)=="" then return
-			elseif string.sub(line,1,2)=="~" then
+			if string.sub(line,1,2)=="~" then
 				w[string.gsub(string.gsub(line,"=.+",""),"~","",1)]
 				=assert(loadstring("return Moveable:new(w,"..string.gsub(line,".+=","")..")")(),"could not load line: "..line)
 			else
