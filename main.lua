@@ -61,8 +61,7 @@ end	end
 
 function pauseddraw()
 	love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
-	love.graphics.print("Current playtime: "..playtime.." seconds",10,10)
-	--randomcolor(true)
+	love.graphics.print("playtime: "..playtime.." seconds",10,10)
 	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
