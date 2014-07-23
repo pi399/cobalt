@@ -23,7 +23,7 @@ function love.load()
 	
 	world=World:loadFile("resources/worlds/testworld")
 	world:initializeCollisions()
-	world:basicSprites(randomcolor())
+	world:basicSprites(randomcolor(false))
 	if world.music then world:playMusic() end
 	
 	love.graphics.setBackgroundColor(255,255,255)
@@ -60,7 +60,7 @@ end	end
 function pauseddraw()
 	love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
 	love.graphics.print("Current playtime: "..duration.." seconds",10,10)
-	randomcolor(false)	love.graphics.setFont(dayposterblack)
+	randomcolor(true)	love.graphics.setFont(dayposterblack)
 	love.graphics.printf("GAME PAUSED",0,200,512,"center")
 end
 
