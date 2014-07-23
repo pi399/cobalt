@@ -52,14 +52,13 @@ function love.draw()
 	end
     
 	if debug then
-		love.graphics.setColor(0,0,0) love.graphics.setFont(oxygenmono)
+		love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
 		love.graphics.print("world name: "..world.name
 		.."\nx: "..round(world.player.x)..", y: "..round(world.player.y).."\nfps: "..love.timer.getFPS(),10,10)
 end	end
 
 function pauseddraw()
-	love.graphics.setColor(0,0,0)    
-	love.graphics.setFont(oxygenmono)
+	love.graphics.setColor(0,0,0)	love.graphics.setFont(oxygenmono)
 	love.graphics.print("Current playtime: "..duration.." seconds",10,10)
 	randomcolor()
 	love.graphics.setFont(dayposterblack) love.graphics.printf("GAME PAUSED",0,200,512,"center")
@@ -80,7 +79,7 @@ function love.keypressed(key)
 		paused=not paused
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-        if paused then world.pauseMusic() else world.resumeMusic() end
+        	if paused then world.pauseMusic() else world.resumeMusic() end
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
