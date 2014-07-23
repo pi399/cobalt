@@ -4,12 +4,12 @@ local Moveable={}
 local mt={__index=Moveable}
 local love=love
 
-function Moveable:new(world,sprite,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may)
-	sprite,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may=
-		type(sprite)=="string" and love.graphics.newImage(sprite) or sprite,
-		mc or false,mm or false,mx or 0,my or 0,mxl or 1,myl or 1,mvx or 0,mvy or 0,max or 0,may or 0
+function Moveable:new(world,spritepath,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may)
+	local spritefield
+	spritefield,mc,mm,mx,my,mxl,myl,mvx,mvy,max,may
+		=require spritepath,mc or false,mm or false,mx or 0,my or 0,mxl or 1,myl or 1,mvx or 0,mvy or 0,max or 0,may or 0
 	local m={collidable=mc,moveable=mm,x=mx,y=my,cx=mcx,cy=mcy,xl=mxl,yl=myl,vx=mvx,vy=mvy,ax=max,ay=may,
-		world=world,worldxcount={},worldycount={},sprite=sprite or love.graphics.newCanvas()}
+		world=world,worldxcount={},worldycount={},sprite=spritefield["down"][1] or love.graphics.newCanvas()}
 	setmetatable(m,mt)
 	world[#world+1]=m
 	return m
