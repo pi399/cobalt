@@ -1,6 +1,6 @@
 --main.lua
 
-require "TEsound"		local TEsound=TEsound
+require "TEsound"			local TEsound=TEsound
 Moveable=require "moveable"	local Moveable=Moveable
 World=require "world"		local World=World
 local love=love
@@ -13,8 +13,7 @@ local oxygenmono,dayposterblack
 local function round(num) return math.floor(num+0.5) end
 
 function love.load()
-	keys={["up"]="w",["down"]="s",["left"]="a",["right"]="d",
-			["quit"]="escape",["debug"]="f3",["pause"]="q"}
+	keys=World:loadFile("resources/worlds/keybindings")
 	debug=false
 	paused=false
 	playtime,start=0,love.timer.getTime()
@@ -38,6 +37,7 @@ function love.update(dt)
 	playtime=math.floor(love.timer.getTime()-start)
 	TEsound.cleanup()
 end
+
 function pausedupdate() end
 
 function randomcolor(set)
@@ -80,7 +80,7 @@ function love.keypressed(key)
 		paused=not paused
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-        if paused then world.pauseMusic() else world.resumeMusic() end
+        if paused and world.music then world.pauseMusic() else world.resumeMusic() end
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
