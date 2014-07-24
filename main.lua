@@ -80,7 +80,7 @@ function love.keypressed(key)
 		paused=not paused
 		love.update,pausedupdate=pausedupdate,love.update
 		love.draw,pauseddraw=pauseddraw,love.draw
-        	if paused then world.pauseMusic() else world.resumeMusic() end
+        if paused then world.pauseMusic() else world.resumeMusic() end
 	elseif key==keys.quit then
 		love.event.push("quit")
 end	end
